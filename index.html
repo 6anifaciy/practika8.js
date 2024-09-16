@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Задание 1 -->
+    <button class="button" id="clickButton">Нажмите (Click)</button>
+    <button class="button" id="hoverButton">Наведите (Hover)</button>
+    <button class="button" id="dblClickButton">Двойной клик (Double Click)</button>
+    <button class="button" id="keyButton">Нажмите любую клавишу (Keydown)</button>
+
+    <script>
+        // Задание 1
+        document.getElementById('clickButton').addEventListener('click', function () {
+            this.style.backgroundColor = 'lightgreen';
+            this.textContent = 'Вы нажали';
+        });
+
+        document.getElementById('hoverButton').addEventListener('mouseover', function () {
+            this.style.backgroundColor = 'lightblue';
+            this.textContent = 'Вы навели курсор';
+        });
+        document.getElementById('hoverButton').addEventListener('mouseout', function () {
+            this.style.backgroundColor = '';
+            this.textContent = 'Наведите';
+        });
+
+        document.getElementById('dblClickButton').addEventListener('dblclick', function () {
+            this.style.backgroundColor = 'lightcoral';
+            this.textContent = 'Вы дважды нажали';
+        });
+
+        document.addEventListener('keydown', function (event) {
+            let keyButton = document.getElementById('keyButton');
+            keyButton.style.backgroundColor = 'lightyellow';
+            keyButton.textContent = `Вы нажали клавишу: ${event.key}`;
+        });
+
+        // Задание 2
+        document.addEventListener('keydown', function (event) {
+            let key = event.key.toLowerCase();
+            if (key === 'r') {
+                document.body.style.backgroundColor = 'red';
+            } else if (key === 'g') {
+                document.body.style.backgroundColor = 'green';
+            } else if (key === 'b') {
+                document.body.style.backgroundColor = 'blue';
+            }
+        });
+
+        document.addEventListener('keyup', function (event) {
+            let key = event.key.toLowerCase();
+            if (key === 'r' || key === 'g' || key === 'b') {
+                document.body.style.backgroundColor = '';
+            }
+        });
+
+
+
+
+
+    </script>
+    <!-- Задание 3 -->
+<div id="block"></div>
+    <script>
+   
+        let topPosition = 0;
+        let leftPosition = 0;
+
+
+        document.addEventListener('keydown', function(event) {
+          let block = document.getElementById('block');
+
+          let key = event.key.toLowerCase();
+          if (key === 'w') {
+            topPosition -= 1; 
+          } else if (key === 's') {
+            topPosition += 1; 
+          } else if (key === 'a') {
+            leftPosition -= 1; 
+          } else if (key === 'd') {
+            leftPosition += 1; 
+          }
+          block.style.top = topPosition + 'px';
+          block.style.left = leftPosition + 'px';
+        });
+    </script>
+
+</body>
+
+</html>
